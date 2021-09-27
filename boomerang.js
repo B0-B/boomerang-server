@@ -12,8 +12,8 @@ _|_|_|      _|_|      _|_|    _|    _|    _|    _|_|_|  _|          _|_|_|  _|  
 */
 
 // ---- parameters ----
-const port = 8080
-const redirecturl = 'https://pbs.twimg.com/media/EDJhNquU4AEaDHT.jpg'
+const port = 8080;
+const redirecturl = 'https://pbs.twimg.com/media/EDJhNquU4AEaDHT.jpg';
 
 
 
@@ -33,22 +33,46 @@ for (const name of Object.keys(nets)) {
     }
 } const ip = Object.values(results)[0][0]
 
+// setup express server
+const express = require('express'); 
+const path = require('path'); 
+const fs = require('fs');
+const app = express();
 
-var express = require('express'); 
-var fs = require('fs'); 
-var path = require('path'); 
-const bodyParser = require('body-parser'); 
-const { exit } = require('process');
-var app = express();
-const dir = path.join(__dirname, '/');
+// construct a get trap
+const sendmail = require('sendmail')({
+    logger: {
+      debug: console.log,
+      info: console.info,
+      warn: console.warn,
+      error: console.error
+    },
+    silent: false,
+});
 app.get('/',function(request, response){
+
+    // collect headers
+    headers = request.rawHeaders;
+
+    sendmail({
+        from: 'here4beeryolo@gmail.com',
+        to: 'here4beeryolo@gmail.com',
+        subject: 'ALERT: Boomerang',
+        html: `You got likely hacked. Boomerang was able to collect the following header information:\n${headers}`,
+      }, function(err, reply) {
+        console.log(err && err.stack);
+        console.dir(reply);
+    });
+
+    // redirect requester
+    console.log(request)
     response.writeHead(302, {
         'Location': redirecturl
     });
     response.end();
 });
 
-// zu guter letzt den server starten
+// run service
 app.listen(port, function () {
     var host;
     if (port == 80) {
@@ -57,7 +81,7 @@ app.listen(port, function () {
         host = `http://${ip}:${port}`;
     }
     console.log(`
-        GUIDE
+                      GUIDE
 
         1] Copy the following text
         --------- copy below ---------
@@ -65,5 +89,10 @@ app.listen(port, function () {
         Link: ${host}
         Password: ${(Math.random() + 1).toString(36).substring(7)+(Math.random() + 1).toString(36).substring(7)}
         ---------- copy end ----------
+        or copy a custom text to clipboard.
+
+        2] Create a new file "wallet.txt" on 
+        your desktop and paste the text there.
+        Save and close - the trap is set.
     `);
 });
