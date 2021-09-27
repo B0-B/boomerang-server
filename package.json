@@ -1,0 +1,22 @@
+{
+  "name": "boomerang-server",
+  "version": "1.0.0",
+  "description": "A small honey-pot defence service. Fishes out potential hackers and routes back. ",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B0-B/boomerang-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B0-B/boomerang-server/issues"
+  },
+  "homepage": "https://github.com/B0-B/boomerang-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
