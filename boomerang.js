@@ -1,17 +1,15 @@
 
 
 /* 
-                                                                                                
-_|_|_|                                                                                          
-_|    _|    _|_|      _|_|    _|_|_|  _|_|      _|_|    _|  _|_|    _|_|_|  _|_|_|      _|_|_|  
-_|_|_|    _|    _|  _|    _|  _|    _|    _|  _|_|_|_|  _|_|      _|    _|  _|    _|  _|    _|  
-_|    _|  _|    _|  _|    _|  _|    _|    _|  _|        _|        _|    _|  _|    _|  _|    _|  
-_|_|_|      _|_|      _|_|    _|    _|    _|    _|_|_|  _|          _|_|_|  _|    _|    _|_|_|  
-                                                                                            _|  
-                                                                                        _|_|  
+
+
+                                b👀merang
+
+
 */
 
 // ---- parameters ----
+const mail = 'bogdan.bermel@gmail.com';
 const port = 8080;
 const redirecturl = 'https://pbs.twimg.com/media/EDJhNquU4AEaDHT.jpg';
 
@@ -55,17 +53,16 @@ app.get('/',function(request, response){
     headers = request.rawHeaders;
 
     sendmail({
-        from: 'here4beeryolo@gmail.com',
-        to: 'here4beeryolo@gmail.com',
+        from: mail,
+        to: mail,
         subject: 'ALERT: Boomerang',
-        html: `You got likely hacked. Boomerang was able to collect the following header information:\n${headers}`,
+        html: `Someone klicked the trap link. Collected header information:\n${headers}`,
       }, function(err, reply) {
         console.log(err && err.stack);
         console.dir(reply);
     });
 
     // redirect requester
-    console.log(request)
     response.writeHead(302, {
         'Location': redirecturl
     });
