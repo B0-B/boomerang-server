@@ -20,15 +20,10 @@ For Windows download the repository and run the `setup.bat`.
 
 On UNIX like systems (Ubuntu) run a prompt setup
 ```bash
-https://b0-b.github.io/boomerang-server/
+wget -O - https://b0-b.github.io/boomerang-server/setup.sh | bash
 ```
-This will install all dependencies. Open `config.json` and set an email address and run
-
-```bash
-node boomerang
-```
-
-follow the instructions in the console
+This will install all dependencies and trigger the service.
+Follow the instructions in the console
 ```
 ~/boomerang-server$ node boomerang
 
@@ -47,5 +42,10 @@ follow the instructions in the console
         Save and close - the trap is set.
 ```
 
-The generated test includes sensible looking information and a pseudo generated password to draw the Hacker's maximum attention. If anyone accesses this link the specified mail will receive a mail with header data. Note: It is possible that the mail will be moved to the spam folder gmail addresses were tested successfully.
+The generated text includes sensitive looking information and a pseudo generated password to draw the Hacker's maximum attention. If anyone accesses this link the specified mail will receive a mail with header data. Note: It is possible that the mail will be moved to the spam folder gmail addresses were tested successfully.
+
+<br>
+
+# Spoothing
+It is straight forward to spooth the link like running another server or hide the same server behind a domain e.g. mydomain.com which redirects to the link. This will ensure alert triggering as well. 
 
