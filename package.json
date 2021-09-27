@@ -18,6 +18,7 @@
   "homepage": "https://github.com/B0-B/boomerang-server#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "prompt-sync": "^4.2.0",
     "sendmail": "^1.6.1"
   }
 }

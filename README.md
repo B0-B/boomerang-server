@@ -20,7 +20,7 @@ For Windows download the repository and run the `setup.bat`.
 
 On UNIX like systems (Ubuntu) run a prompt setup
 ```bash
-wget -O
+https://b0-b.github.io/boomerang-server/
 ```
 This will install all dependencies. Open `config.json` and set an email address and run
 

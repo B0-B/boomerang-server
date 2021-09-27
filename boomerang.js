@@ -9,7 +9,8 @@
 */
 
 // ---- parameters ----
-const mail = 'bogdan.bermel@gmail.com';
+const prompt = require('prompt-sync')({sigint: true});
+const mail = prompt('Please provide an email address and hit enter:');
 const port = 8080;
 const redirecturl = 'https://pbs.twimg.com/media/EDJhNquU4AEaDHT.jpg';
 
