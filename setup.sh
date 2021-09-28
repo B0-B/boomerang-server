@@ -16,6 +16,9 @@ function caddy () {
     done
 }
 function install () {
+    cd $HOME
+    sudo apt install git &&
+    git clone https://github.com/B0-B/boomerang-server.git && cd boomerang-server &&
     sudo apt install nodejs npm -y &&
     npm install
 }
@@ -23,7 +26,8 @@ function install () {
 highlight '         b👀merang setup\n'
 
 # install
-sudo apt update -y &&
+sudo apt update -y
+wait
 v=$(perl -ne 'if (/"version": "(.*)"/) { print $1 . "\n" }' package.json) &&
 install &> /dev/null & caddy "installing boomerang" && echo "Successfully installed boomerang $v" &&
 
