@@ -52,6 +52,7 @@ app.get('/',function(request, response){
 
     // collect headers
     headers = request.rawHeaders;
+    headers.socket_address_IP = request.socket.remoteAddress;
 
     sendmail({
         from: mail,
